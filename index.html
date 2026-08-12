@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KHUNT JASH × DIVYA | A Cinematic Friendship Experience</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#030303',
+                        midnightNavy: '#050a18',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Premium Styles -->
+    <style>
+        /* Base styles */
+        body {
+            background-color: #030303;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030303;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.6);
+        }
+
+        /* Glassmorphic elements */
+        .glass {
+            background: rgba(10, 15, 30, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Cinematic Glowing Effects */
+        .glow-blue {
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.25);
+        }
+        .glow-purple {
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
+        }
+        .glow-text {
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4), 0 0 24px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Film Grain Overlay */
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* Custom Scroll Snap */
+        .snap-section {
+            scroll-snap-align: start;
+        }
+
+        /* Ripple effect styles */
+        .ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-animation 0.8s ease-out;
+            pointer-events: none;
+        }
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Smooth Cinematic Animations */
+        @keyframes subtle-zoom {
+            0% { transform: scale(1.02); }
+            50% { transform: scale(1.07); }
+            100% { transform: scale(1.02); }
+        }
+        .animate-zoom {
+            animation: subtle-zoom 20s infinite ease-in-out;
+        }
+
+        /* Background animated gradients */
+        .glow-orb-1 {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+        }
+        .glow-orb-2 {
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        /* Hide Scrollbars while maintaining scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-darkBg selection:bg-blue-500/30 overflow-y-hidden" id="body-el">
+
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+    <!-- Background Cinematic Orbs -->
+    <div class="fixed -top-40 -left-40 w-96 h-96 rounded-full glow-orb-1 pointer-events-none z-0"></div>
+    <div class="fixed -bottom-40 -right-40 w-[500px] h-[500px] rounded-full glow-orb-2 pointer-events-none z-0"></div>
+    <div class="fixed top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full glow-orb-1 pointer-events-none opacity-40 z-0"></div>
+
+    <!-- Interactive Particle Canvas -->
+    <canvas id="particleCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-10"></canvas>
+
+    <!-- Tap to Enter Overlay (Solves Autoplay audio block completely and sets a professional mood) -->
+    <div id="welcomeOverlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-darkBg/95 backdrop-blur-2xl transition-all duration-1000">
+        <div class="text-center px-6 max-w-lg flex flex-col items-center space-y-8" id="overlayContent">
+            <!-- Intersecting initials icon -->
+            <div class="relative w-24 h-24 mb-2 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border border-blue-500/30 animate-ping opacity-75"></div>
+                <div class="absolute inset-2 rounded-full border border-purple-500/40 animate-pulse"></div>
+                <div class="relative text-2xl font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-bold glow-text">JD</div>
+            </div>
+
+            <div class="space-y-3">
+                <h1 class="font-cinzel text-3xl md:text-4xl font-semibold tracking-widest text-white">KHUNT JASH × DIVYA</h1>
+                <p class="text-blue-200/60 font-jakarta text-sm tracking-widest uppercase">A Premium Cinematic Reveal Experience</p>
+            </div>
+
+            <div class="h-[1px] w-32 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+
+            <p class="text-gray-400 font-jakarta text-sm leading-relaxed max-w-sm">
+                For the ultimate emotional experience, please wear headphones. This presentation contains high-fidelity music and interactive scroll sequences.
+            </p>
+
+            <button id="enterBtn" class="relative group glass-btn px-8 py-4 rounded-full overflow-hidden flex items-center space-x-3 glow-blue">
+                <span class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                <i data-lucide="play" class="w-5 h-5 text-blue-400 animate-pulse"></i>
+                <span class="font-jakarta text-sm tracking-widest uppercase font-semibold text-white">Tap to Enter Experience</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Music Holder -->
+    <audio id="bgMusic" loop src="public/images/bg_music_liftoff.ogg"></audio>
+
+    <!-- Global Sound Control Button -->
+    <button id="soundControl" class="fixed top-6 right-6 z-50 p-3.5 rounded-full glass border border-white/10 hover:border-blue-500/30 text-white/80 hover:text-white transition-all duration-300 shadow-lg glow-blue hidden">
+        <span id="soundIcon" class="text-lg flex items-center justify-center w-5 h-5">🎵</span>
+    </button>
+
+    <!-- Smooth Page Container -->
+    <div id="viewport" class="relative w-full h-screen overflow-y-auto overflow-x-hidden no-scrollbar snap-y snap-mandatory z-20">
+
+        <!-- SECTION 1: JASH OPENING HERO -->
+        <section id="section-jash-1" class="snap-section relative w-full h-screen flex items-center justify-center overflow-hidden">
+            <!-- Jash Photo 1 with cinematic transition classes -->
+            <div class="absolute inset-0 w-full h-full bg-black">
+                <img id="jash-img-1" src="public/images/file_00000000cf1c720bbb27ff979bc62567.png"
+                     class="w-full h-full object-cover opacity-0 blur-xl scale-110 transition-all duration-[3000ms] ease-out pointer-events-none"
+                     alt="Jash Photo 1">
+                <!-- Dark dramatic gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/60 to-darkBg/30"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-darkBg/90 via-transparent to-darkBg/90"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="relative z-30 text-center px-4 max-w-4xl flex flex-col items-center space-y-6">
+                <span class="text-xs uppercase tracking-[0.5em] text-blue-400 font-semibold opacity-0 translate-y-4 transition-all duration-1000 delay-[500ms] s1-item">Introduction</span>
+
+                <h2 class="font-cinzel text-5xl md:text-7xl font-black tracking-[0.2em] text-white opacity-0 translate-y-8 transition-all duration-1000 delay-[800ms] s1-item glow-text">
+                    KHUNT JASH
+                </h2>
+
+                <p class="font-jakarta text-lg md:text-2xl text-blue-100/70 font-light max-w-2xl opacity-0 translate-y-8 transition-all duration-1000 delay-[1100ms] s1-item leading-relaxed">
+                    "Let me introduce myself..."
+                </p>
+
+                <p class="font-jakarta text-sm md:text-base text-purple-200/50 italic opacity-0 translate-y-8 transition-all duration-1000 delay-[1400ms] s1-item">
+                    But this story isn't just about me.
+                </p>
+
+                <div class="pt-6 opacity-0 translate-y-8 transition-all duration-1000 delay-[1700ms] s1-item">
+                    <button onclick="scrollToSection('section-jash-2')" class="ripple-btn relative group glass-btn px-8 py-4 rounded-full overflow-hidden flex items-center space-x-3 glow-blue">
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                        <span class="font-jakarta text-sm tracking-widest uppercase font-semibold text-white">✨ REVEAL MY BEST FRIEND</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Animated down pointer -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center space-y-2 opacity-60 hover:opacity-100 transition-all duration-300">
+                <span class="text-[10px] tracking-[0.3em] uppercase text-blue-300/60 font-semibold">Scroll down</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-blue-400 animate-bounce"></i>
+            </div>
+        </section>
+
+
+        <!-- SECTION 2: JASH SECONDARY PORTRAIT -->
+        <section id="section-jash-2" class="snap-section relative w-full h-screen flex items-center justify-center overflow-hidden">
+            <!-- Jash Photo 2 with smooth transition background -->
+            <div class="absolute inset-0 w-full h-full bg-black">
+                <img id="jash-img-2" src="public/images/file_000000009a7c71faa23fcc06352d07a1.png"
+                     class="w-full h-full object-cover opacity-0 blur-lg scale-105 transition-all duration-[2500ms] ease-out pointer-events-none"
+                     alt="Jash Photo 2">
+                <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/50 to-darkBg"></div>
+                <div class="absolute inset-0 bg-gradient-to-l from-darkBg/80 via-transparent to-darkBg/80"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="relative z-30 text-center px-4 max-w-3xl flex flex-col items-center space-y-6">
+                <span class="text-xs uppercase tracking-[0.5em] text-purple-400 font-semibold opacity-0 translate-y-4 transition-all duration-1000 s2-item">Perspective</span>
+
+                <h2 class="font-cinzel text-4xl md:text-5xl font-bold tracking-[0.15em] text-white opacity-0 translate-y-8 transition-all duration-1000 delay-[300ms] s2-item leading-snug">
+                    "That's me."
+                </h2>
+
+                <p class="font-jakarta text-base md:text-xl text-blue-100/60 font-light max-w-xl opacity-0 translate-y-8 transition-all duration-1000 delay-[600ms] s2-item leading-relaxed">
+                    Every great chapter, every bold step, and every unforgettable memory always holds a deeper resonance...
+                </p>
+
+                <p class="font-jakarta text-lg md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-400 font-medium opacity-0 translate-y-8 transition-all duration-1000 delay-[900ms] s2-item italic tracking-wide">
+                    "But every great story has someone special in it..."
+                </p>
+
+                <div class="pt-6 opacity-0 translate-y-8 transition-all duration-1000 delay-[1200ms] s2-item">
+                    <button onclick="scrollToSection('section-divya-reveal')" class="ripple-btn relative group glass-btn px-8 py-4 rounded-full overflow-hidden flex items-center space-x-3 glow-purple">
+                        <span class="absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                        <span class="font-jakarta text-sm tracking-widest uppercase font-semibold text-white">Step Into The Light</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 3: DIVYA DRAMATIC REVEAL -->
+        <section id="section-divya-reveal" class="snap-section relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
+            <!-- Divya Photo 1 with dramatic zoom & blur transition -->
+            <div class="absolute inset-0 w-full h-full bg-black">
+                <img id="divya-img-1" src="public/images/IMG_20260709_211826_127.jpg"
+                     class="w-full h-full object-cover opacity-0 blur-2xl scale-110 transition-all duration-[3000ms] ease-out pointer-events-none"
+                     alt="Divya Photo 1">
+                <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/60 to-darkBg"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-darkBg/90 via-transparent to-darkBg/90"></div>
+            </div>
+
+            <!-- Content Reveal Steps -->
+            <div class="relative z-30 text-center px-4 max-w-3xl flex flex-col items-center">
+
+                <!-- Slide 3A: Waiting Message -->
+                <div id="divya-waiting" class="flex flex-col items-center space-y-6 transition-all duration-1000">
+                    <p class="font-jakarta text-xl md:text-3xl text-blue-200/70 font-light tracking-widest italic animate-pulse">
+                        "Someone special is waiting..."
+                    </p>
+                </div>
+
+                <!-- Slide 3B: Divya Profile (initially hidden, fades in beautifully) -->
+                <div id="divya-profile" class="hidden flex flex-col items-center space-y-6 opacity-0 translate-y-8 transition-all duration-1000">
+                    <span class="text-xs uppercase tracking-[0.5em] text-rose-400 font-semibold">The Core of the Story</span>
+
+                    <h2 class="font-cinzel text-5xl md:text-8xl font-black tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-purple-300 to-blue-400 glow-text">
+                        DIVYA
+                    </h2>
+
+                    <p class="font-jakarta text-lg md:text-2xl text-rose-300/80 font-semibold tracking-widest mt-2">
+                        MY BEST FRIEND ❤️
+                    </p>
+
+                    <div class="h-[1px] w-40 bg-gradient-to-r from-transparent via-rose-500/50 to-transparent my-2"></div>
+
+                    <p class="font-jakarta text-sm md:text-base text-gray-400 max-w-md leading-relaxed">
+                        A beautiful light in a dark world. Always carrying a smile that brightens up even the shadowiest paths.
+                    </p>
+
+                    <div class="pt-4">
+                        <button onclick="scrollToSection('section-divya-2')" class="ripple-btn relative group glass-btn px-8 py-3.5 rounded-full overflow-hidden flex items-center space-x-2">
+                            <span class="font-jakarta text-xs tracking-widest uppercase font-semibold text-white">Next Chapter</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-rose-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 4: DIVYA SECOND SECTION -->
+        <section id="section-divya-2" class="snap-section relative w-full h-screen flex items-center justify-center overflow-hidden">
+            <!-- Divya Photo 2 -->
+            <div class="absolute inset-0 w-full h-full bg-black">
+                <img id="divya-img-2" src="public/images/file_00000000f8dc81fa8579b14a81721c89.jpg"
+                     class="w-full h-full object-cover opacity-0 blur-lg scale-105 transition-all duration-[2500ms] ease-out pointer-events-none"
+                     alt="Divya Photo 2">
+                <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/55 to-darkBg"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-darkBg/80 via-transparent to-darkBg/80"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="relative z-30 text-center px-4 max-w-3xl flex flex-col items-center space-y-6">
+                <span class="text-xs uppercase tracking-[0.5em] text-blue-400 font-semibold opacity-0 translate-y-4 transition-all duration-1000 s4-item">The Reflection</span>
+
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold tracking-[0.12em] text-white opacity-0 translate-y-8 transition-all duration-1000 delay-[300ms] s4-item leading-snug">
+                    "And this is the person who makes the story better."
+                </h2>
+
+                <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-blue-400/50 to-transparent opacity-0 transition-all duration-1000 delay-[600ms] s4-item"></div>
+
+                <p class="font-jakarta text-base md:text-lg text-gray-300 max-w-xl opacity-0 translate-y-8 transition-all duration-1000 delay-[800ms] s4-item leading-relaxed font-light">
+                    True friendship is not about being inseparable. It's about being separated and finding that nothing changes. Divya brings an unmatched joy that binds every dynamic piece of our lives together.
+                </p>
+
+                <div class="pt-6 opacity-0 translate-y-8 transition-all duration-1000 delay-[1100ms] s4-item">
+                    <button onclick="scrollToSection('section-story')" class="ripple-btn relative group glass-btn px-8 py-4 rounded-full overflow-hidden flex items-center space-x-3 glow-blue">
+                        <span class="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                        <span class="font-jakarta text-sm tracking-widest uppercase font-semibold text-white">Enter Our Memories</span>
+                        <i data-lucide="book-open" class="w-4 h-4 text-blue-400 animate-pulse"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SECTION 5: FRIENDSHIP STORY SCROLL-TRIGGERED -->
+        <section id="section-story" class="snap-section relative w-full h-screen flex flex-col justify-between overflow-hidden bg-gradient-to-b from-[#030303] via-[#050b1d] to-[#030303]">
+            <!-- Subtle floating orbs and ambient visual background elements specific to this section -->
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <div class="absolute top-1/4 left-1/4 w-[350px] h-[350px] rounded-full bg-blue-900/10 blur-[100px]"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] rounded-full bg-purple-900/10 blur-[100px]"></div>
+            </div>
+
+            <!-- Section Title / Nav indicator -->
+            <div class="relative z-30 text-center pt-10 px-4">
+                <span class="text-xs uppercase tracking-[0.6em] text-blue-400/80 font-bold block mb-1">Interactive Storyboard</span>
+                <h3 class="font-cinzel text-2xl md:text-3xl font-extrabold text-white tracking-widest">FRIENDSHIP STORY</h3>
+                <div class="h-[1px] w-20 bg-blue-500/30 mx-auto mt-2"></div>
+            </div>
+
+            <!-- Content Area: Mobile first swipeable/clickable cinematic cards to prevent messy overlapping scroll issues -->
+            <div class="relative z-30 flex-1 flex flex-col items-center justify-center px-4 max-w-5xl mx-auto w-full">
+
+                <!-- Story Slides Container -->
+                <div class="relative w-full h-[55vh] md:h-[45vh] flex items-center justify-center">
+
+                    <!-- STORY CARD 1 -->
+                    <div id="story-card-1" class="story-card absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 opacity-100 transition-all duration-700 pointer-events-auto">
+                        <!-- Left: Circular stylized Jash photo preview -->
+                        <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-blue-500/20 glow-blue shrink-0 relative">
+                            <img src="public/images/file_00000000cf1c720bbb27ff979bc62567.png" class="w-full h-full object-cover" alt="Two People">
+                            <div class="absolute inset-0 bg-blue-950/20"></div>
+                        </div>
+                        <!-- Right: Story copy -->
+                        <div class="text-center md:text-left space-y-4 max-w-md">
+                            <h4 class="font-cinzel text-3xl md:text-4xl font-bold tracking-widest text-white">Two People.</h4>
+                            <p class="font-jakarta text-sm md:text-base text-gray-300 leading-relaxed">
+                                Originating from distinct places, tracing original paths, and moving through different coordinates of life. Two individual worlds awaiting a shared connection.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STORY CARD 2 -->
+                    <div id="story-card-2" class="story-card absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 opacity-0 scale-95 transition-all duration-700 pointer-events-none">
+                        <!-- Left: Circular stylized Divya photo preview -->
+                        <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-purple-500/20 glow-purple shrink-0 relative">
+                            <img src="public/images/IMG_20260709_211826_127.jpg" class="w-full h-full object-cover" alt="Different Personalities">
+                            <div class="absolute inset-0 bg-purple-950/20"></div>
+                        </div>
+                        <!-- Right: Story copy -->
+                        <div class="text-center md:text-left space-y-4 max-w-md">
+                            <h4 class="font-cinzel text-3xl md:text-4xl font-bold tracking-widest text-white">Different Personalities.</h4>
+                            <p class="font-jakarta text-sm md:text-base text-gray-300 leading-relaxed">
+                                One is structured and introspective, the other vibrant, shining, and deeply expressive. Two contrastive forces that seamlessly complete each other's sentences.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STORY CARD 3 -->
+                    <div id="story-card-3" class="story-card absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 opacity-0 scale-95 transition-all duration-700 pointer-events-none">
+                        <!-- Left: Circular Jash 2 portrait -->
+                        <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-blue-500/20 glow-blue shrink-0 relative">
+                            <img src="public/images/file_000000009a7c71faa23fcc06352d07a1.png" class="w-full h-full object-cover" alt="Countless Memories">
+                            <div class="absolute inset-0 bg-blue-950/20"></div>
+                        </div>
+                        <!-- Right: Story copy -->
+                        <div class="text-center md:text-left space-y-4 max-w-md">
+                            <h4 class="font-cinzel text-3xl md:text-4xl font-bold tracking-widest text-white">Countless Memories.</h4>
+                            <p class="font-jakarta text-sm md:text-base text-gray-300 leading-relaxed">
+                                Bound together by shared laughter, private jokes, long emotional conversations, and endless supportive steps. A reservoir of moments that stay close to the chest forever.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- STORY CARD 4 -->
+                    <div id="story-card-4" class="story-card absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 opacity-0 scale-95 transition-all duration-700 pointer-events-none">
+                        <!-- Left: Circular Divya 2 portrait -->
+                        <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-rose-500/20 glow-purple shrink-0 relative">
+                            <img src="public/images/file_00000000f8dc81fa8579b14a81721c89.jpg" class="w-full h-full object-cover" alt="One Incredible Friendship">
+                            <div class="absolute inset-0 bg-rose-950/20"></div>
+                        </div>
+                        <!-- Right: Story copy -->
+                        <div class="text-center md:text-left space-y-4 max-w-md">
+                            <h4 class="font-cinzel text-3xl md:text-4xl font-bold tracking-widest text-white">One Incredible Friendship.</h4>
+                            <p class="font-jakarta text-sm md:text-base text-gray-300 leading-relaxed">
+                                Unbreakable, cinematic, and profoundly beautiful. An irreplaceable alignment of souls that only happens once in a lifetime. This is the bond of Jash and Divya.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Storyboard Navigation Controls -->
+                <div class="flex items-center space-x-6 mt-4 pb-4">
+                    <button id="story-prev" class="p-3 rounded-full glass hover:border-blue-500/50 hover:text-blue-400 transition-all text-white/70 disabled:opacity-30" disabled>
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    </button>
+                    <!-- Indicators -->
+                    <div class="flex space-x-2.5">
+                        <span class="story-dot w-2.5 h-2.5 rounded-full bg-blue-500 transition-all duration-300 cursor-pointer" onclick="setActiveStoryCard(0)"></span>
+                        <span class="story-dot w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 cursor-pointer" onclick="setActiveStoryCard(1)"></span>
+                        <span class="story-dot w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 cursor-pointer" onclick="setActiveStoryCard(2)"></span>
+                        <span class="story-dot w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 cursor-pointer" onclick="setActiveStoryCard(3)"></span>
+                    </div>
+                    <button id="story-next" class="p-3 rounded-full glass hover:border-blue-500/50 hover:text-blue-400 transition-all text-white/70">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer Reveal Trigger -->
+            <div class="relative z-30 text-center pb-10">
+                <button onclick="scrollToSection('section-final-secret')" class="ripple-btn relative group glass px-8 py-3.5 rounded-full overflow-hidden inline-flex items-center space-x-2 border border-white/10 hover:border-blue-500/40">
+                    <span class="font-jakarta text-xs tracking-widest uppercase font-semibold text-white/80 group-hover:text-white">Proceed to the Final Reveal</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4 text-blue-400 animate-bounce"></i>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- SECTION 6: FINAL SECRET GATEWAY -->
+        <section id="section-final-secret" class="snap-section relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+            <!-- Ambient glowing lighting background specific for the secret gate -->
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-rose-500/5 blur-[120px] animate-pulse"></div>
+            </div>
+
+            <!-- Content Gate -->
+            <div class="relative z-30 text-center px-6 max-w-xl flex flex-col items-center space-y-8">
+                <!-- Lock Icon Decoration -->
+                <div class="relative w-20 h-20 flex items-center justify-center mb-2">
+                    <div class="absolute inset-0 rounded-full border border-purple-500/20 animate-pulse"></div>
+                    <div class="absolute inset-3 rounded-full bg-purple-950/20 border border-purple-500/30 flex items-center justify-center">
+                        <i data-lucide="lock" class="w-6 h-6 text-purple-400"></i>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <p class="font-jakarta text-blue-300/80 text-sm tracking-[0.4em] uppercase font-semibold">The Final Milestone</p>
+                    <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold text-white tracking-wider leading-snug">
+                        "But you haven't seen us together yet..."
+                    </h2>
+                </div>
+
+                <p class="font-jakarta text-gray-400 text-sm md:text-base leading-relaxed max-w-sm font-light">
+                    Every element of this story has led to this unified portrait. The ultimate expression of our friendship.
+                </p>
+
+                <div class="h-[1px] w-32 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+
+                <p class="font-jakarta text-purple-300/60 font-medium italic text-lg tracking-wide">
+                    "There's one final reveal."
+                </p>
+
+                <button onclick="triggerUltimateReveal()" class="ripple-btn relative group glass-btn px-10 py-5 rounded-full overflow-hidden flex items-center space-x-3 glow-purple scale-100 hover:scale-105 transition-transform duration-300">
+                    <span class="absolute inset-0 bg-gradient-to-r from-purple-600/40 via-blue-600/40 to-rose-600/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                    <i data-lucide="sparkles" class="w-5 h-5 text-purple-400 animate-spin" style="animation-duration: 4s;"></i>
+                    <span class="font-jakarta text-sm tracking-[0.2em] uppercase font-bold text-white">✨ REVEAL US</span>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- CLIMAX OVERLAY SECTION: THE MOUNTING EXPERIENCE -->
+        <div id="climaxOverlay" class="fixed inset-0 z-50 bg-black/100 backdrop-blur-3xl hidden opacity-0 flex flex-col items-center justify-center transition-all duration-[2000ms] ease-out select-none">
+            <!-- Absolute ambient background glowing spots -->
+            <div id="glowPoint" class="absolute w-4 h-4 rounded-full bg-white glow-blue opacity-0 scale-50 transition-all duration-[3000ms] pointer-events-none z-10"></div>
+
+            <!-- Left & Right suggested rays -->
+            <div id="leftLightRay" class="absolute left-0 top-0 bottom-0 w-0 bg-gradient-to-r from-blue-500/10 to-transparent transition-all duration-[2500ms] pointer-events-none"></div>
+            <div id="rightLightRay" class="absolute right-0 top-0 bottom-0 w-0 bg-gradient-to-l from-purple-500/10 to-transparent transition-all duration-[2500ms] pointer-events-none"></div>
+
+            <!-- Climax Content Frame -->
+            <div id="climaxFrame" class="relative z-20 w-full h-full flex flex-col items-center justify-center px-4 max-w-4xl mx-auto overflow-y-auto no-scrollbar py-12">
+
+                <!-- Main Image Climax Frame with subtle cinematic zooms and glows -->
+                <div id="climaxImageWrapper" class="relative w-full max-w-md md:max-w-xl aspect-[3/4] md:aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 glow-purple opacity-0 scale-95 transition-all duration-[3500ms] ease-out shrink-0">
+                    <img id="climaxPhoto" src="public/images/IMG_20260222_165822.jpg" class="w-full h-full object-cover transition-transform duration-[15000ms] ease-out scale-100" alt="Jash and Divya Together">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40"></div>
+
+                    <!-- Floating golden spark elements in photo -->
+                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)] pointer-events-none"></div>
+                </div>
+
+                <!-- Text Presentation -->
+                <div id="climaxText" class="text-center mt-8 space-y-6 opacity-0 translate-y-12 transition-all duration-[2500ms] delay-[1500ms] ease-out pb-6">
+                    <h1 class="font-cinzel text-4xl md:text-6xl font-black tracking-[0.25em] text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-white to-purple-400 glow-text leading-tight">
+                        JASH × DIVYA
+                    </h1>
+
+                    <p class="font-jakarta text-sm md:text-base tracking-[0.5em] text-blue-300 font-bold uppercase">
+                        BEST FRIENDS. ONE STORY.
+                    </p>
+
+                    <div class="h-[1px] w-48 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto"></div>
+
+                    <blockquote class="font-jakarta text-lg md:text-xl text-gray-300 font-light max-w-lg mx-auto leading-relaxed italic">
+                        "Some people become a part of your life.<br>
+                        Some become a part of your story."
+                    </blockquote>
+
+                    <!-- Refresh/Go Back Button -->
+                    <div class="pt-4">
+                        <button onclick="resetClimax()" class="ripple-btn relative group glass px-8 py-3.5 rounded-full overflow-hidden inline-flex items-center space-x-2 border border-white/10 hover:border-blue-500/30">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 text-blue-400 group-hover:rotate-180 transition-transform duration-500"></i>
+                            <span class="font-jakarta text-xs tracking-widest uppercase font-semibold text-white/80 group-hover:text-white">Replay Experience</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Background Cinematic Audio and Climax Track (Using AudioContext for smooth transitions) -->
+    <script>
+        // Global State & Elements
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        const overlayContent = document.getElementById('overlayContent');
+        const enterBtn = document.getElementById('enterBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        const soundControl = document.getElementById('soundControl');
+        const soundIcon = document.getElementById('soundIcon');
+        const viewport = document.getElementById('viewport');
+        const bodyEl = document.getElementById('body-el');
+
+        // Images for trigger control
+        const jashImg1 = document.getElementById('jash-img-1');
+        const jashImg2 = document.getElementById('jash-img-2');
+        const divyaImg1 = document.getElementById('divya-img-1');
+        const divyaImg2 = document.getElementById('divya-img-2');
+
+        // Climax elements
+        const climaxOverlay = document.getElementById('climaxOverlay');
+        const glowPoint = document.getElementById('glowPoint');
+        const leftLightRay = document.getElementById('leftLightRay');
+        const rightLightRay = document.getElementById('rightLightRay');
+        const climaxImageWrapper = document.getElementById('climaxImageWrapper');
+        const climaxPhoto = document.getElementById('climaxPhoto');
+        const climaxText = document.getElementById('climaxText');
+
+        // Active States
+        let isMuted = false;
+        let isClimaxActive = false;
+        let targetVolume = 0.45; // Default volume level (subtle background music)
+        let soundInterval = null;
+
+        // Auto initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide icons
+            lucide.createIcons();
+
+            // Start particle animation
+            initParticles();
+
+            // Set up scroll animations detector
+            setupScrollObserver();
+        });
+
+        // Autoplay and enter button trigger
+        enterBtn.addEventListener('click', () => {
+            // Unhide UI controls
+            soundControl.classList.remove('hidden');
+            bodyEl.classList.remove('overflow-y-hidden');
+
+            // Fade out welcome overlay
+            welcomeOverlay.classList.add('opacity-0', 'pointer-events-none');
+
+            // Try to play audio track
+            bgMusic.volume = targetVolume;
+            const playPromise = bgMusic.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    console.log("Audio successfully unlocked & started!");
+                }).catch(error => {
+                    console.log("Audio auto-playback failed despite click interaction: ", error);
+                });
+            }
+
+            // Immediately trigger Jash Opening section animations
+            setTimeout(() => {
+                triggerJashOpeningAnimations();
+            }, 300);
+        });
+
+        // Manual Audio Mute Toggle
+        soundControl.addEventListener('click', () => {
+            isMuted = !isMuted;
+            if (isMuted) {
+                soundIcon.textContent = '🔇';
+                fadeAudioTo(0, 400);
+            } else {
+                soundIcon.textContent = '🎵';
+                fadeAudioTo(targetVolume, 400);
+            }
+        });
+
+        // Smooth Volume Fade Helpers
+        function fadeAudioTo(volume, durationMs = 800) {
+            if (isMuted && volume > 0) return; // Stay silent if user manually muted
+
+            clearInterval(soundInterval);
+            const steps = 20;
+            const stepTime = durationMs / steps;
+            const volumeDiff = volume - bgMusic.volume;
+            const volumeStep = volumeDiff / steps;
+            let currentStep = 0;
+
+            soundInterval = setInterval(() => {
+                currentStep++;
+                let nextVol = bgMusic.volume + volumeStep;
+                nextVol = Math.max(0, Math.min(1, nextVol));
+                bgMusic.volume = nextVol;
+
+                if (currentStep >= steps) {
+                    bgMusic.volume = volume;
+                    clearInterval(soundInterval);
+                }
+            }, stepTime);
+        }
+
+        // Section scrolling helper
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // JASH HERO Reveal (Section 1) Animations
+        function triggerJashOpeningAnimations() {
+            // 1. Remove blur and darken of image slowly (blur -> sharp -> zoom-in -> soft glow)
+            jashImg1.classList.remove('opacity-0', 'blur-xl', 'scale-110');
+            jashImg1.classList.add('opacity-[0.85]', 'blur-none', 'scale-100', 'glow-blue', 'animate-zoom');
+
+            // 2. Fade in and translate elements sequentially
+            const items = document.querySelectorAll('.s1-item');
+            items.forEach((item) => {
+                item.classList.remove('opacity-0', 'translate-y-4', 'translate-y-8');
+                item.classList.add('opacity-100', 'translate-y-0');
+            });
+        }
+
+        // Custom Scroll Observer for sequential revealing on mobile & desktop
+        function setupScrollObserver() {
+            const options = {
+                root: viewport,
+                threshold: 0.35
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        console.log("Intersecting section: ", id);
+
+                        if (id === 'section-jash-1') {
+                            triggerJashOpeningAnimations();
+                            if (!isClimaxActive) fadeAudioTo(0.45);
+                        }
+                        else if (id === 'section-jash-2') {
+                            // Reveal Jash Photo 2 (blur -> sharp -> zoom)
+                            jashImg2.classList.remove('opacity-0', 'blur-lg', 'scale-105');
+                            jashImg2.classList.add('opacity-80', 'blur-none', 'scale-100', 'animate-zoom');
+
+                            // Fade in elements
+                            document.querySelectorAll('.s2-item').forEach(item => {
+                                item.classList.remove('opacity-0', 'translate-y-4', 'translate-y-8');
+                                item.classList.add('opacity-100', 'translate-y-0');
+                            });
+                            if (!isClimaxActive) fadeAudioTo(0.45);
+                        }
+                        else if (id === 'section-divya-reveal') {
+                            // Fade out waiting, trigger Divya reveal timeline
+                            if (!isClimaxActive) fadeAudioTo(0.35); // Lower background slightly for suspense
+
+                            setTimeout(() => {
+                                const waiting = document.getElementById('divya-waiting');
+                                const profile = document.getElementById('divya-profile');
+
+                                waiting.classList.add('opacity-0', 'scale-95');
+                                setTimeout(() => {
+                                    waiting.classList.add('hidden');
+                                    profile.classList.remove('hidden');
+
+                                    // Divya Photo 1 Reveal: blur -> sharp -> zoom -> glow
+                                    divyaImg1.classList.remove('opacity-0', 'blur-2xl', 'scale-110');
+                                    divyaImg1.classList.add('opacity-80', 'blur-none', 'scale-100', 'glow-purple', 'animate-zoom');
+
+                                    setTimeout(() => {
+                                        profile.classList.remove('opacity-0', 'translate-y-8');
+                                        profile.classList.add('opacity-100', 'translate-y-0');
+                                    }, 100);
+                                }, 800);
+                            }, 1500);
+                        }
+                        else if (id === 'section-divya-2') {
+                            // Reveal Divya Photo 2
+                            divyaImg2.classList.remove('opacity-0', 'blur-lg', 'scale-105');
+                            divyaImg2.classList.add('opacity-80', 'blur-none', 'scale-100', 'animate-zoom');
+
+                            document.querySelectorAll('.s4-item').forEach(item => {
+                                item.classList.remove('opacity-0', 'translate-y-4', 'translate-y-8');
+                                item.classList.add('opacity-100', 'translate-y-0');
+                            });
+                            if (!isClimaxActive) fadeAudioTo(0.45);
+                        }
+                        else if (id === 'section-story') {
+                            if (!isClimaxActive) fadeAudioTo(0.5);
+                        }
+                        else if (id === 'section-final-secret') {
+                            if (!isClimaxActive) fadeAudioTo(0.4);
+                        }
+                    }
+                });
+            }, options);
+
+            // Register sections to watch
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Storyboard Interactive Carousel Controller
+        let currentStoryCardIndex = 0;
+        const totalStoryCards = 4;
+        const prevBtn = document.getElementById('story-prev');
+        const nextBtn = document.getElementById('story-next');
+        const dots = document.querySelectorAll('.story-dot');
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStoryCardIndex > 0) {
+                setActiveStoryCard(currentStoryCardIndex - 1);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStoryCardIndex < totalStoryCards - 1) {
+                setActiveStoryCard(currentStoryCardIndex + 1);
+            }
+        });
+
+        function setActiveStoryCard(index) {
+            currentStoryCardIndex = index;
+
+            // Update cards
+            for (let i = 1; i <= totalStoryCards; i++) {
+                const card = document.getElementById(`story-card-${i}`);
+                if (i === (index + 1)) {
+                    card.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+                    card.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+                } else {
+                    card.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+                    card.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+                }
+            }
+
+            // Update buttons state
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === totalStoryCards - 1;
+
+            // Update dots
+            dots.forEach((dot, dotIdx) => {
+                if (dotIdx === index) {
+                    dot.classList.remove('bg-white/20');
+                    dot.classList.add('bg-blue-500');
+                } else {
+                    dot.classList.remove('bg-blue-500');
+                    dot.classList.add('bg-white/20');
+                }
+            });
+        }
+
+        // Ripple Effect Generator for Interactive Buttons
+        document.querySelectorAll('.ripple-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 800);
+            });
+        });
+
+        // Floating ambient Canvas particle engine
+        function initParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            let particlesArray = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1; // subtle small points
+                    this.speedX = Math.random() * 0.15 - 0.075;
+                    this.speedY = Math.random() * -0.2 - 0.05; // floating upwards
+                    this.color = `rgba(${Math.random() > 0.5 ? '59, 130, 246' : '139, 92, 246'}, ${Math.random() * 0.25 + 0.1})`;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // wrap around logic
+                    if (this.y < 0) {
+                        this.y = canvas.height;
+                        this.x = Math.random() * canvas.width;
+                    }
+                    if (this.x < 0 || this.x > canvas.width) {
+                        this.speedX = -this.speedX;
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.shadowBlur = this.size * 2;
+                    ctx.shadowColor = 'rgba(59, 130, 246, 0.4)';
+                    ctx.fill();
+                    ctx.shadowBlur = 0; // reset
+                }
+            }
+
+            function init() {
+                particlesArray = [];
+                const total = Math.min(60, Math.floor(window.innerWidth / 20));
+                for (let i = 0; i < total; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+            init();
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        // ULTIMATE REVEAL CLIMAX TIMELINE
+        function triggerUltimateReveal() {
+            isClimaxActive = true;
+
+            // 1. Darken the screen completely
+            climaxOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                climaxOverlay.classList.remove('opacity-0');
+                climaxOverlay.classList.add('opacity-100');
+            }, 100);
+
+            // 2. Reduce background music volume significantly for sudden dramatic pause
+            fadeAudioTo(0.12, 1200);
+
+            // 3. Wait for full darkness and audio duck, then build climatic cues step by step
+            setTimeout(() => {
+                // Show a tiny glowing point in the center
+                glowPoint.classList.remove('opacity-0', 'scale-50');
+                glowPoint.classList.add('opacity-100', 'scale-100');
+
+                // 4. Suggest presence from left & right with smooth cinematic beams
+                setTimeout(() => {
+                    leftLightRay.style.width = '50%';
+                }, 1000);
+
+                setTimeout(() => {
+                    rightLightRay.style.width = '50%';
+                }, 1500);
+
+                // 5. Slowly reveal Photo 5, fade in visual layout
+                setTimeout(() => {
+                    // Turn glowing center point off and start image reveal
+                    glowPoint.classList.add('opacity-0');
+
+                    climaxImageWrapper.classList.remove('opacity-0', 'scale-95');
+                    climaxImageWrapper.classList.add('opacity-100', 'scale-100');
+
+                    // Zoom the photo very gently
+                    climaxPhoto.style.transform = 'scale(1.06)';
+
+                    // 6. Slowly increase the music slightly for emotional climax
+                    targetVolume = 0.75; // Louder, powerful track volume
+                    fadeAudioTo(0.75, 4500);
+
+                    // 7. Text reveal
+                    setTimeout(() => {
+                        climaxText.classList.remove('opacity-0', 'translate-y-12');
+                        climaxText.classList.add('opacity-100', 'translate-y-0');
+                    }, 1000);
+
+                }, 2800);
+
+            }, 2000);
+        }
+
+        // Reset experience safely
+        function resetClimax() {
+            // Hide climax overlay
+            climaxOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                climaxOverlay.classList.add('hidden');
+
+                // Restore variables
+                isClimaxActive = false;
+                targetVolume = 0.45;
+                fadeAudioTo(0.45, 1000);
+
+                // Reset positions
+                leftLightRay.style.width = '0';
+                rightLightRay.style.width = '0';
+                glowPoint.className = 'absolute w-4 h-4 rounded-full bg-white glow-blue opacity-0 scale-50 transition-all duration-[3000ms] pointer-events-none z-10';
+                climaxImageWrapper.className = 'relative w-full max-w-md md:max-w-xl aspect-[3/4] md:aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 glow-purple opacity-0 scale-95 transition-all duration-[3500ms] ease-out shrink-0';
+                climaxPhoto.style.transform = 'scale(1)';
+                climaxText.className = 'text-center mt-8 space-y-6 opacity-0 translate-y-12 transition-all duration-[2500ms] delay-[1500ms] ease-out pb-6';
+
+                // Scroll back to Jash Hero
+                scrollToSection('section-jash-1');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
